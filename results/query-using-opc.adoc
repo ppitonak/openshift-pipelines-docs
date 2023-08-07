@@ -66,12 +66,12 @@ The format of the record's `Name` field is {NAMESPACE}/results/{Run UUID}/record
 We can get Yaml for Pipelinerun using the below command:
 [source,bash]
 ----
-opc results   records get --insecure  --addr ${RESULTS_API} results-testing/results/04e2fbf2-8653-405f-bc42-a262bcf02bed/records/04e2fbf2-8653-405f-bc42-a262bcf02bed  | yq -r .data.value | base64 -d | yq -P '.'
+opc results   records get --insecure  --addr ${RESULTS_API} results-testing/results/04e2fbf2-8653-405f-bc42-a262bcf02bed/records/04e2fbf2-8653-405f-bc42-a262bcf02bed  | jq -r .data.value | base64 -d | yq -P '.'
 ----
 
 === Fetching Logs
 Similarly, we can get the logs of Pipelinerun by changing "records" to "logs" in the name of the record associated with PipelineRun:
 [source,bash]
 ----
-opc results   logs get --insecure  --addr ${RESULTS_API} results-testing/results/04e2fbf2-8653-405f-bc42-a262bcf02bed/logs/04e2fbf2-8653-405f-bc42-a262bcf02bed  | yq -r .data | base64 -d
+opc results   logs get --insecure  --addr ${RESULTS_API} results-testing/results/04e2fbf2-8653-405f-bc42-a262bcf02bed/logs/04e2fbf2-8653-405f-bc42-a262bcf02bed  | jq -r .data | base64 -d
 ----
